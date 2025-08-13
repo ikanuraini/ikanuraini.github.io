@@ -1,155 +1,406 @@
+@@ -0,0 +1,402 @@
 <!DOCTYPE html>
 <html lang="id">
-<meta charset='UTF-8'/><meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport'/><meta content='IE=edge' http-equiv='X-UA-Compatible'/>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script><link href="https://feeldreams.github.io/heihbd/style.css" rel="stylesheet" type="text/css" />
-  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
-  <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
-  
 <head>
-<title>Happy Birthday</title>
-<link rel="icon" type="image/x-icon" href="https://malasid.github.io/favicon.png">
-<meta name="description" content="HTML Bucin Malas.id">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #222121, #222121); /* Gradasi lembut */
+        }
+        #satu, #dua, #tiga, #empat, #lima, #enam, #tuju, #delapan, #sembilan, #sepuluh {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #e2e4e4; /* Warna teks gelap yang ramah di mata */
+            background-color: #222121; /* Latar belakang putih yang lembut */
+            opacity: 1; /* Opacity default */
+            transition: opacity 1s ease-in-out; /* Transisi untuk efek fade */
+        }
+        #dua, #tiga, #empat, #lima, #enam, #tuju, #delapan, #sembilan, #sepuluh {
+            display: none; /* Awalnya disembunyikan */
+            flex-direction: column; /* Agar gambar dan teks dapat disusun vertikal */
+            align-items: center; /* Pusatkan elemen dalam kolom */
+            padding: 20px; /* Ruang di dalam div */
+        }
+        img {
+            width: 150px; /* Atur ukuran gambar amplop */
+            height: auto;
+            cursor: pointer; /* Mengubah kursor saat mouse di atas gambar */
+            margin-top: 10px; /* Jarak antara teks dan gambar */
+            transition: transform 1s ease-in-out; /* Transisi lebih lambat dan smooth */
+        }
+        img:hover {
+            transform: scale(1.5); /* Membesar gambar saat hover (150%) */
+        }
+        /* Gaya untuk kartu ulang tahun */
+        .card {
+            background: #333; /* Latar belakang gelap untuk kontras */
+            border-radius: 20px; /* Sudut melengkung yang lebih besar */
+            padding: 30px; /* Ruang di dalam kartu */
+            width: 90%; /* Lebar kartu lebih besar */
+            max-width: 600px; /* Lebar maksimal kartu */
+            text-align: center; /* Teks di tengah */
+            margin-top: 20px; /* Jarak atas kartu */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Bayangan di sekitar kartu */
+        }
+       
+        .card h6 {
+            font-family: 'Arial', sans-serif; /* Font untuk judul */
+            color: #FFFFFF; /* Warna teks putih */
+            margin: 0; /* Menghapus margin default */
+            font-size: 2rem; /* Ukuran teks judul */
+        }
+        .card p {
+            color: #F0F8FF; /* Warna teks untuk paragraf */
+            font-size: 1.2rem; /* Ukuran teks sedikit lebih besar */
+            margin-top: 10px; /* Jarak antara elemen teks */
+        }
+        /* Gaya untuk GIF */
+        .gif-container {
+            position: relative;
+            margin-bottom: 20px; /* Jarak antara GIF dan kartu */
+        }
+        .gif-container img {
+            width: 150px; /* Ukuran GIF */
+            height: 150px; /* Tinggi GIF */
+            border-radius: 50%; /* Membuat gambar menjadi bulatan */
+            border: 5px solid #f5b847; /* Warna border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Bayangan di sekitar GIF */
+            object-fit: cover; /* Memastikan gambar sesuai dengan bulatan */
+            margin-bottom: 20px; /* Jarak bawah dari GIF */
+        }
 
+        #UcapanDua, #UcapanTiga {
+            font-size: 18px; /* Ukuran font yang lebih besar */
+            white-space: nowrap; /* Menghindari pembungkus otomatis */
+            overflow: hidden; /* Menyembunyikan teks yang melampaui batas */
+            width: 0; /* Awalnya, lebar elemen adalah 0 */
+            animation: reveal 5s linear forwards; /* Durasi animasi dan jenis gerakan */
+        }
+
+        @keyframes reveal {
+            0% {
+                width: 0; /* Dimulai dengan lebar 0 */
+            }
+            100% {
+                width: 100%; /* Berakhir dengan lebar penuh */
+            }
+        }
+
+        /* Gaya untuk tombol Next */
+        .next-button {
+            margin-top: 20px; /* Jarak atas tombol */
+            padding: 10px 20px; /* Ruang dalam tombol */
+            background-color: #333333; 
+            color: #f5b847; /* Warna teks tombol */
+            border: none; /* Tanpa border */
+            border-radius: 5px; /* Sudut melengkung tombol */
+            cursor: pointer; /* Kursor tangan saat hover */
+            font-size: 1rem; /* Ukuran font tombol */
+            transition: background-color 0.3s; /* Transisi warna latar belakang */
+        }
+
+        .next-button:hover {
+            background-color: #333333; /* Warna latar belakang saat hover */
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px; /* Kurangi padding pada layar kecil */
+            }
+            .card h6 {
+                font-size: 1.5rem; /* Ukuran font judul lebih kecil */
+            }
+            .card p {
+                font-size: 1rem; /* Ukuran font paragraf lebih kecil */
+            }
+            img {
+                width: 120px; /* Ukuran gambar amplop lebih kecil di layar kecil */
+            }
+        }
+
+    </style>
 </head>
 <body>
-  
-   <!-- Ganti Audio di sini -->
-  <audio src="https://ikanuraini.github.io/hbd.m4a" id="linkmp3" class="sembunyi"></audio>
+    <audio src="https://ikanuraini.github.io/hbd.m4a" id="linkmp3" class="sembunyi"></audio>
 
-   
-   <div id="bodyblur">
-     <!-- Wallpaper --><img src="https://feeldreams.github.io/wp9.jpg" id="wallpaper"/><div id="beneranblur"></div>
-   </div>
-   
-   <div id='Content'>
-    <p id="ket">This is for you <br> My favorit person ❤️</p>
+    <div id="satu">
+        <div>
+            <h6>This is for you <br> Urel 🎁</h6>
+            <!-- Gambar Amplop yang dapat diklik -->
+            <img src="https://ikanuraini.github.io/surat.png" alt="Amplop" id="envelopeImage">
+        </div>
+    </div>
 
-     <div id="kadoIn">
-       <!-- Tombol Surat --><img src="https://ikanuraini.github.io/surat.png"/>
+    <div id="dua">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/bunga.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <h6 id='UcapanDua'><b>Hai, Urel ✨ </b></h6>
+            <p id='UcapanTiga'>Happy Birthday Ya 🤗</p>
+            <!-- Tombol Next -->
+            <button class="next-button" id="nextButton">Next</button>
+        </div>
+    </div>
 
-        
-     </div>
-     <!-- <p id="ket">Klik Kadonya!</p> -->
-
-     <div class="kumpulanstiker">
-         <!-- Stiker untuk Konten -->
-         <img src="https://feeldreams.github.io/bunga.gif" id="fotostiker"/>
-         <img src="https://feeldreams.github.io/pusn.gif" id="fotostiker1"/>
-         <img src="https://feeldreams.github.io/pandacoklat.gif" id="fotostiker2"/>
-         <img src="https://feeldreams.github.io/cilukba.gif" id="fotostiker3"/>
-         <img src="https://feeldreams.github.io/pandakuning.gif" id="fotostiker4"/>
-         <img src="https://feeldreams.github.io/emawh.gif" id="fotostiker5"/>
-         
-         <img src="https://feeldreams.github.io/pandacoklat.gif" id="fotostiker6"/>
-     </div>
-     
-     <p id="halo" class="halo"></p>
-     
-     <div><blockquote id='bq' data-text='㋡'>
-       <p id="kalimat">Happy Birthday Partner Terbaikku ❤️</p>
-
-       <p id="pesan1">Make a wish <br>Semoga semua doa dan harapan kamu di ijabah sama Allah ya. <br><br> Aaamiin... </p>
-       <!-- <p id="opsL1">Klik untuk Lanjut</p> -->
-       <div id="kolombaru">
-        <li id="lv1">🤍</li>
-        <li id="lv2">🤍</li>
-        <li id="lv3">🤍</li>
-        <li id="lv4">🤍</li>
-      </div>
-      
-       <p id="pesan2">Tunggu...</p>
-       <!-- Pesan -->
-       <p id="pesan3">Ciee.. Ada yang Ultah Nih 🤣❤️</p>
-       <p id="pesan4">Happy Birthday, </p>
-       <p id="pesan5" class="gaya2">Nambah tua aja ya, hehe</p>
-       <p id="pesan6" class="gaya2">Moga panjang umur biar tiap tahun bisa traktirin aku wkwk 😆❤️</p>
-       <p id="pesan7" class="gaya2">Sehat selalu ya!</p>
-
-       <p id="pesan8" class="gaya2">Canda wkwwk :v</p>
-       <p id="pesan9" class="gaya2">Oh iya, semoga di hari spesialmu ini kamu dapat menjadi pribadi yang lebih baik yaa.. 🥳❤️</p>
-       <p id="pesan10" class="gaya2">Happy Level Up Day!! 🥳</p>
-       <!-- <p id="pesan11" class="gaya2">Love You Sayang ❤️</p> -->
-
-       <!-- Tombol Lanjut -->
-       <p id="opsL">Klik untuk Lanjut</p>
-     </blockquote></div>
-
-     <!-- Tombol Kirim Pesan -->
-     <div id="Tombol"><a id="By">&#128140; Lanjut</a></div>
-
-     <!-- Pesan Tambahan -->
-     <p id="katatambahan" class="sembunyi">Gajadi deh soalnya kamu bau wleee 😜</p>
-     
-     <!-- Pesan Ditolak -->
-     <div id="pesanditolak">
-       <img id="stikerditolak" src="https://feeldreams.github.io/weee.gif"/>
-       <p id="kataditolak">Yaudah kalo gamau mh 😜</p>
-     </div>
-
-   </div>
-
-<script>
-  const body = document.querySelector("body");
-  const swalst = Swal.mixin({timer: 2300, allowOutsideClick: false, showConfirmButton: false, timerProgressBar: true, imageHeight: 90,}); 
-  audio = new Audio('' + linkmp3.src); ftganti=0;fungsi=0;fungsiAwal=0;deffotostiker=fotostiker.src;function berjatuhan() {
-    const heart = document.createElement("div"); heart.className = "fas fa-snowflake"; heart.style.left = (Math.random() * 90)+"vw"; 
-    heart.style.animationDuration = (Math.random()*3)+2+"s"; body.appendChild(heart);} setInterval(function name(params) 
-    {var heartArr = document.querySelectorAll(".fa-snowflake"); if (heartArr.length > 100) 
-    {heartArr[0].remove()}},100);Content.style = "opacity:1;margin-top:16vh";
-     const swals = Swal.mixin({allowOutsideClick: false, cancelButtonColor: '#FF0040', imageHeight: 80,}); 
-  
-  // document.getElementById("kadoIn").onclick = function() {if(fungsiAwal==0){audio.play();fungsiAwal=1;kadoIn.style="transition:all .8s ease;transform:scale(10);opacity:0";wallpaper.style="transform: scale(1.5);";ket.style="display:none";setTimeout(initengahan,300);setTimeout(inipesan,500)}}
-  
-  document.getElementById("kadoIn").onclick = function () {
-    if (fungsiAwal == 0) {
-        audio.play();
-        fungsiAwal = 1;
-        kadoIn.style = "transition: all .8s ease; transform: scale(10); opacity: 0";
-        wallpaper.style = "transform: scale(1.5);";
-        ket.style = "display: none";
-        
-        // Set default nama
-        window.nama = "Sayang"; // Nama default yang digunakan
-        vketikhalo = "Hai, " + nama + " ✨"; // Gunakan nama default untuk pesan
-        setTimeout(mulainama, 300);
-        setTimeout(inipesanLanjut, 500);
-    }
-}
-
-function mulainama() {
-    document.getElementById("halo").innerText = vketikhalo; // Menampilkan halo dengan nama default
-    // Lanjutkan ke pesan selanjutnya atau logika yang ada di fungsi mulainama()
-}
-
-  async function inipesan(){
-    var { value: nama } = await swals.fire({
-           title: 'Masukin Nama Kamu', input: 'text',
-       });
-       if(nama && nama.length < 11){
-         window.nama = nama;
-         vketikhalo="Hai, " + nama + " Sayang ✨";
-         mulainama();
-         } else {
-           await swals.fire('Ups!', 'Nama tidak boleh kosong atau lebih dari 10 karakter, ya!');inipesan();
-    }
-  }
-
-  //Variable Pertanyaan Akhir
-  var tanya = 'Mau Kado Gak Nih? 😶❤️';
-  var opstanya = 'Ayo jawab 😆';
-  var tompositif = 'Mau';
-  var tomnegatif = 'Engga';
+    <div id="tiga">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/bunga.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <h6 id='UcapanDua'><b> Make a wish dulu ✨  </b></h6>
+            <p id='UcapanTiga'><br><br>Semoga semua doa serta harapanmu <br> di ijabah sama Allah ya. <br><br> Aamiin...</p>
+            <button class="next-button" id="nextButtonDua">Next</button>
+        </div>
+    </div>
     
-    async function menuju(){pesanwhatsapp = "Makasii udah ngucapin " + nama + " ultah ><";await swals.fire('OK!', 'Kirim jawabannya ke WhatsApp aku, ya!', 'success');window.location = "https://api.whatsapp.com/send?phone=&text=" + pesanwhatsapp;}
-</script>
-<script src="https://malasid.github.io/html/hbd.js"></script>
-<!-- Sampai Sini -->
-</body>
-  </html>
+    <div id="empat">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/pusn.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <p style="font-size: 16px; text-align: left;"> Sehat selalu  🤗, <br><br>
+                Semoga diberi umur panjang, umur yang berkah dan bermanfaat. <br>
+                Semoga selalu dalam lindungan Allah. <br>
+                Semoga dilancarkan rizkinya <br>
+                Semoga bahagia selalu <br>
+                Sabar selalu ya 🥺 <br>
+                Dimudahkan semua urusannya, Sukses Selalu</p>
+            <button class="next-button" id="nextButtonTiga">Next</button>
+        </div>
+    </div>
 
+
+     
+    <div id="lima">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/pandakuning.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <h6 id='UcapanDua'><b> Message For You   </b></h6>
+
+            <p id="UcapanTiga" style="font-size: 16px;">
+               - Jaga ibadahnya <br>
+               - Semangat dietnya <br>
+               - Jaga kesehatan <br>
+               - Jangan maem aneh aneh😡 <br>
+               - Jangan banyak pikran ya 🤗<br>
+            </p>
+                <button class="next-button" id="nextButtonEmpat">Next</button>
+        </div>
+    </div>
+
+    <div id="enam">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/emawh.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <p style="font-size: 16px;">
+               Semoga hari hari urel lebih menyenangkan dan lebih baik  <br>
+              dari hari ini ya. senyum terus, nangis dikit boleh hehehe 
+            </p>
+                <button class="next-button" id="nextButtonLima">Next</button>
+        </div>
+    </div>
+
+    <div id="tuju">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/emawh.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <p style="font-size: 16px;">
+                If you need some one, I'M HERE<br>
+                (inget itu ya) 🤗<br>
+            </p>
+                <button class="next-button" id="nextButtonEnam">Next</button>
+        </div>
+    </div>
+
+    
+    <div id="delapan">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/bunga.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <p style="font-size: 16px;">
+                Ika minta maaf ya,<br>
+                Ika belum bisa ada terus mungkin buat urel <br>
+                Ika masih suka sibuk dengan diri ika sendiri <br> 
+                Mungkin ika suka nggak peka sama kondisi urell 🥺
+            </p>
+                <button class="next-button" id="nextButtonTuju">Next</button>
+        </div>
+    </div>
+<!-- 
+    <div id="sembilan">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/bunga.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <p style="font-size: 16px;">
+                Ika minta maaf ya,<br>
+                Ika belum bisa menjadi yang mas pengen <br>
+                Ika masih banyak kurangnya <br> 
+                Jangan bosan mengingatkan ika ya 🥺
+            </p>
+                <button class="next-button" id="nextButtonDelapan">Next</button>
+        </div>
+    </div> -->
+    
+    <div id="sembilan">
+        <div class="gif-container">
+            <img src="https://feeldreams.github.io/emawh.gif" alt="Bunga" />
+        </div>
+        <div class="card">
+            <h6 id='UcapanDua'><b> Bahagia Selalu ya urel 🤗  </b></h6>
+        </div>
+    </div>
+    <script>
+        const satu = document.getElementById('satu');
+        const dua = document.getElementById('dua');
+        const tiga = document.getElementById('tiga');
+        const empat = document.getElementById('empat');
+        const lima = document.getElementById('lima');
+        const enam = document.getElementById('enam');
+        const tuju = document.getElementById('tuju');
+        const delapan = document.getElementById('delapan');
+        const sembilan = document.getElementById('sembilan');
+        const sepuluh = document.getElementById('sepuluh');
+        const envelopeImage = document.getElementById('envelopeImage');
+        const audio = document.getElementById('linkmp3'); // Ambil elemen audio
+        const nextButton = document.getElementById('nextButton'); // Ambil tombol Next
+        const nextButtonDua = document.getElementById('nextButtonDua'); // Ambil tombol Next
+        const nextButtonTiga = document.getElementById('nextButtonTiga'); // Ambil tombol Next
+        const nextButtonEmpat = document.getElementById('nextButtonEmpat'); // Ambil tombol Next
+        const nextButtonLima = document.getElementById('nextButtonLima'); // Ambil tombol Next
+        const nextButtonDelapan = document.getElementById('nextButtonDelapan'); // Ambil tombol Next
+        const nextButtonSembilan = document.getElementById('nextButtonSembilan'); // Ambil tombol Next
+
+        // Fungsi untuk beralih ke div kedua
+        envelopeImage.addEventListener('click', () => {
+            satu.style.opacity = '0';  // Mulai fade out div pertama
+            setTimeout(() => {
+                satu.style.display = 'none';  // Sembunyikan div pertama setelah fade out
+                dua.style.display = 'flex';   // Tampilkan div kedua
+                setTimeout(() => {
+                    dua.style.opacity = '1'; // Mulai fade in div kedua
+                    audio.play(); // Memutar audio setelah div kedua muncul
+                }, 50); // Sedikit jeda untuk memastikan div dua ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        // Fungsi untuk beralih ke div ketiga
+        nextButton.addEventListener('click', () => {
+            dua.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                dua.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                tiga.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    tiga.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        nextButtonDua.addEventListener('click', () => {
+            tiga.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                tiga.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                empat.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    empat.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        nextButtonTiga.addEventListener('click', () => {
+            empat.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                empat.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                lima.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    lima.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        
+        nextButtonEmpat.addEventListener('click', () => {
+            lima.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                lima.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                enam.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    enam.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        nextButtonLima.addEventListener('click', () => {
+            enam.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                enam.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                tuju.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    tuju.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+
+        nextButtonEnam.addEventListener('click', () => {
+            tuju.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                tuju.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                delapan.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    delapan.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        nextButtonTuju.addEventListener('click', () => {
+            delapan.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                delapan.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                sembilan.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    sembilan.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+        nextButtonDelapan.addEventListener('click', () => {
+            sembilan.style.opacity = '0'; // Mulai fade out div kedua
+            setTimeout(() => {
+                sembilan.style.display = 'none'; // Sembunyikan div kedua setelah fade out
+                sepuluh.style.display = 'flex'; // Tampilkan div ketiga
+                setTimeout(() => {
+                    sepuluh.style.opacity = '1'; // Mulai fade in div ketiga
+                }, 50); // Sedikit jeda untuk memastikan div tiga ditampilkan
+            }, 1000); // Waktu yang sama dengan transisi opacity
+        });
+
+
+        // Set awal opacity div kedua dan ketiga
+        dua.style.opacity = '0'; // Mulai dengan div kedua tidak terlihat
+        tiga.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        empat.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        lima.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        enam.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        tuju.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        delapan.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        sembilan.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+        sepuluh.style.opacity = '0'; // Mulai dengan div ketiga tidak terlihat
+    </script>
+
+</body>
+</html>
